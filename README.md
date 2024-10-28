@@ -11,7 +11,8 @@
 ### FAISS.jsonl: JSON Lines file containing data used to build the FAISS index.
 ### Requirement.txt: List of required Python packages.
 ### README.md: This readme file.
-### demo_screenshot.png: Screenshot image for the demo 
+### demo_screenshot.png: ![image](https://github.com/user-attachments/assets/54f527a6-55f3-480a-ac34-744befa9bcc0)
+
 
 
 
