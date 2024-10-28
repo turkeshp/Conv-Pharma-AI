@@ -1,0 +1,12 @@
+gradio
+faiss-cpu
+numpy
+sentence-transformers
+networkx
+plotly
+langchain
+requests
+spacy
+transformers
+deep-translator
+torch

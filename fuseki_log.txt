@@ -1,0 +1,144 @@
+10:37:56 INFO  Server          :: Apache Jena Fuseki 4.7.0
+10:37:57 INFO  Config          :: FUSEKI_HOME=/content/apache-jena-fuseki-4.7.0
+10:37:57 INFO  Config          :: FUSEKI_BASE=/content/run
+10:37:57 INFO  Config          :: Shiro file: file:///content/run/shiro.ini
+10:37:57 INFO  Server          ::   Memory: 4.0 GiB
+10:37:57 INFO  Server          ::   Java:   11.0.24
+10:37:57 INFO  Server          ::   OS:     Linux 6.1.85+ amd64
+10:37:57 INFO  Server          ::   PID:    5711
+10:37:57 INFO  Server          :: Started 2024/10/09 10:37:57 UTC on port 3030
+10:38:16 INFO  Admin           :: [1] Create database : name = /thesis_1
+10:38:16 INFO  Fuseki          :: [2] POST http://localhost:3030/thesis_1/data
+10:38:17 INFO  Fuseki          :: [2] Body: Content-Length=0, Content-Type=text/turtle, Charset=null => Turtle : Count=0 Triples=0 Quads=0
+10:38:17 INFO  Fuseki          :: [2] 200 OK (23 ms)
+10:38:47 INFO  Fuseki          :: [3] POST http://localhost:3030/thesis_1/data
+10:38:47 INFO  Fuseki          :: [3] Body: Content-Length=47789, Content-Type=text/turtle, Charset=null => Turtle : Count=1036 Triples=1036 Quads=0
+10:38:47 INFO  Fuseki          :: [3] 200 OK (249 ms)
+10:38:52 INFO  Fuseki          :: [4] POST http://localhost:3030/thesis_1/query
+10:38:52 INFO  Fuseki          :: [4] Query = SELECT ?subject ?predicate ?object WHERE { ?subject ?predicate ?object } LIMIT 10
+10:38:52 INFO  Fuseki          :: [4] 200 OK (33 ms)
+10:50:06 INFO  Fuseki          :: [5] POST http://localhost:3030/thesis_1/query
+10:50:06 INFO  Fuseki          :: [5] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Norvasc ex:description ?value. ex:Norvasc ex:product ?value. } 
+10:50:06 INFO  Fuseki          :: [5] 200 OK (19 ms)
+10:51:24 INFO  Fuseki          :: [6] POST http://localhost:3030/thesis_1/query
+10:51:24 INFO  Fuseki          :: [6] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Basel ex:facility ?value. ex:Basel ex:production ?value. ex:Basel ex:capacity ?value. ex:Basel ex:antibiotics ?value. ex:Basel ex:production ?value. ex:Basel ex:flu ?value. ex:Basel ex:season ?value. ex:Basel ex:demand ?value. ex:Zithromax ex:facility ?value. ex:Zithromax ex:production ?value. ex:Zithromax ex:capacity ?value. ex:Zithromax ex:antibiotics ?value. ex:Zithromax ex:production ?value. ex:Zithromax ex:flu ?value. ex:Zithromax ex:season ?value. ex:Zithromax ex:demand ?value. } 
+10:51:24 INFO  Fuseki          :: [6] 200 OK (15 ms)
+10:51:57 INFO  Fuseki          :: [7] POST http://localhost:3030/thesis_1/query
+10:51:57 INFO  Fuseki          :: [7] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Zithromax ex:facilities ?value. ex:Zithromax ex:production ?value. ex:Zithromax ex:flu ?value. ex:Zithromax ex:season ?value. ex:Zithromax ex:demand ?value. ex:Zithromax ex:facility ?value. ex:Zithromax ex:production ?value. ex:Zithromax ex:capacity ?value. ex:Zithromax ex:antibiotics ?value. ex:Basel ex:facilities ?value. ex:Basel ex:production ?value. ex:Basel ex:flu ?value. ex:Basel ex:season ?value. ex:Basel ex:demand ?value. ex:Basel ex:facility ?value. ex:Basel ex:production ?value. ex:Basel ex:capacity ?value. ex:Basel ex:antibiotics ?value. } 
+10:51:57 INFO  Fuseki          :: [7] 200 OK (16 ms)
+11:39:43 INFO  Fuseki          :: [8] POST http://localhost:3030/thesis_1/query
+11:39:43 INFO  Fuseki          :: [8] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Zithromax ex:facilities ?value. ex:Zithromax ex:production ?value. ex:Zithromax ex:flu ?value. ex:Zithromax ex:season ?value. ex:Zithromax ex:demand ?value. } 
+11:39:43 INFO  Fuseki          :: [8] 200 OK (17 ms)
+11:56:04 INFO  Fuseki          :: [9] POST http://localhost:3030/thesis_1/query
+11:56:04 INFO  Fuseki          :: [9] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?subject ?predicate ?object WHERE {     ?subject ?predicate ?object. } LIMIT 10 
+11:56:04 INFO  Fuseki          :: [9] 200 OK (15 ms)
+11:56:41 INFO  Fuseki          :: [10] POST http://localhost:3030/thesis_1/query
+11:56:41 INFO  Fuseki          :: [10] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Tylenol ex:batch ?value. ex:Tylenol ex:number ?value. } 
+11:56:41 INFO  Fuseki          :: [10] 200 OK (13 ms)
+11:57:37 INFO  Fuseki          :: [11] POST http://localhost:3030/thesis_1/query
+11:57:37 INFO  Fuseki          :: [11] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Novartis ex:location ?value. ex:Pfizer ex:location ?value. } 
+11:57:37 INFO  Fuseki          :: [11] 200 OK (13 ms)
+11:59:14 INFO  Fuseki          :: [12] POST http://localhost:3030/thesis_1/query
+11:59:14 INFO  Fuseki          :: [12] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?subject ?predicate ?object WHERE {     ?subject ?predicate ?object. } LIMIT 10 
+11:59:14 INFO  Fuseki          :: [12] 200 OK (13 ms)
+12:09:55 INFO  Fuseki          :: [13] POST http://localhost:3030/thesis_1/query
+12:09:55 INFO  Fuseki          :: [13] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?subject ?predicate ?object WHERE {     ?subject ?predicate ?object. } LIMIT 10 
+12:09:55 INFO  Fuseki          :: [13] 200 OK (14 ms)
+12:11:16 INFO  Fuseki          :: [14] POST http://localhost:3030/thesis_1/query
+12:11:16 INFO  Fuseki          :: [14] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?subject ?predicate ?object WHERE {     ?subject ?predicate ?object. } LIMIT 10 
+12:11:16 INFO  Fuseki          :: [14] 200 OK (15 ms)
+12:17:52 INFO  Fuseki          :: [15] POST http://localhost:3030/thesis_1/query
+12:17:52 INFO  Fuseki          :: [15] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Novartis ex:location ?value. } 
+12:17:52 INFO  Fuseki          :: [15] 200 OK (13 ms)
+12:52:52 INFO  Fuseki          :: [16] POST http://localhost:3030/thesis_1/query
+12:52:52 INFO  Fuseki          :: [16] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Amoxil ex:expiry ?value. ex:Amoxil ex:date ?value. } 
+12:52:52 INFO  Fuseki          :: [16] 200 OK (15 ms)
+12:53:24 INFO  Fuseki          :: [17] POST http://localhost:3030/thesis_1/query
+12:53:24 INFO  Fuseki          :: [17] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Amoxil ex:expiration ?value. ex:Amoxil ex:date ?value. } 
+12:53:24 INFO  Fuseki          :: [17] 200 OK (15 ms)
+13:00:09 INFO  Fuseki          :: [18] POST http://localhost:3030/thesis_1/query
+13:00:09 INFO  Fuseki          :: [18] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?subject ?predicate ?object WHERE {     ?subject ?predicate ?object. } LIMIT 10 
+13:00:09 INFO  Fuseki          :: [18] 200 OK (15 ms)
+13:06:47 INFO  Fuseki          :: [19] POST http://localhost:3030/thesis_1/query
+13:06:47 INFO  Fuseki          :: [19] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Amoxil ex:expiry ?value. ex:Amoxil ex:date ?value. } 
+13:06:47 INFO  Fuseki          :: [19] 200 OK (14 ms)
+13:25:34 INFO  Fuseki          :: [20] POST http://localhost:3030/thesis_1/query
+13:25:34 INFO  Fuseki          :: [20] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Amoxil ex:expiry ?value. ex:Amoxil ex:date ?value. } 
+13:25:34 INFO  Fuseki          :: [20] 200 OK (14 ms)
+13:36:17 INFO  Fuseki          :: [21] POST http://localhost:3030/thesis_1/query
+13:36:17 INFO  Fuseki          :: [21] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Amoxil ex:expiry ?value. ex:Amoxil ex:date ?value. } 
+13:36:17 INFO  Fuseki          :: [21] 200 OK (14 ms)
+13:36:57 INFO  Fuseki          :: [22] POST http://localhost:3030/thesis_1/query
+13:36:57 INFO  Fuseki          :: [22] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Basel ex:products ?value. ex:Basel ex:facility ?value. ex:Basel ex:produce ?value. } 
+13:36:57 INFO  Fuseki          :: [22] 200 OK (14 ms)
+13:43:01 INFO  Fuseki          :: [23] POST http://localhost:3030/thesis_1/query
+13:43:01 INFO  Fuseki          :: [23] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:NJ ex:products ?value. ex:NJ ex:facility ?value. ex:Kenilworth ex:products ?value. ex:Kenilworth ex:facility ?value. } 
+13:43:01 INFO  Fuseki          :: [23] 200 OK (14 ms)
+13:44:15 INFO  Fuseki          :: [24] POST http://localhost:3030/thesis_1/query
+13:44:15 INFO  Fuseki          :: [24] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Reddy ex:materials ?value. ex:Reddy ex:Laboratories ?value. } 
+13:44:15 INFO  Fuseki          :: [24] 200 OK (14 ms)
+13:44:53 INFO  Fuseki          :: [25] POST http://localhost:3030/thesis_1/query
+13:44:53 INFO  Fuseki          :: [25] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Reddy ex:materials ?value. ex:Reddy ex:Laboratories ?value. } 
+13:44:53 INFO  Fuseki          :: [25] 200 OK (13 ms)
+13:45:52 INFO  Fuseki          :: [26] POST http://localhost:3030/thesis_1/query
+13:45:52 INFO  Fuseki          :: [26] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Reddy ex:materials ?value. ex:Reddy ex:Laboratories ?value. } 
+13:45:52 INFO  Fuseki          :: [26] 200 OK (13 ms)
+13:48:03 INFO  Fuseki          :: [27] POST http://localhost:3030/thesis_1/query
+13:48:03 INFO  Fuseki          :: [27] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Reddy ex:materials ?value. ex:Reddy ex:Laboratories ?value. } 
+13:48:03 INFO  Fuseki          :: [27] 200 OK (14 ms)
+13:51:14 INFO  Fuseki          :: [28] POST http://localhost:3030/thesis_1/query
+13:51:14 INFO  Fuseki          :: [28] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Reddy ex:materials ?value. ex:Reddy ex:Laboratories ?value. } 
+13:51:14 INFO  Fuseki          :: [28] 200 OK (18 ms)
+13:52:10 INFO  Fuseki          :: [29] POST http://localhost:3030/thesis_1/query
+13:52:10 INFO  Fuseki          :: [29] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Reddy ex:materials ?value. ex:Reddy ex:Laboratories ?value. } 
+13:52:10 INFO  Fuseki          :: [29] 200 OK (13 ms)
+13:54:08 INFO  Fuseki          :: [30] POST http://localhost:3030/thesis_1/query
+13:54:08 INFO  Fuseki          :: [30] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:New_York ex:products ?value. ex:New_York ex:facility ?value. ex:NY ex:products ?value. ex:NY ex:facility ?value. } 
+13:54:08 INFO  Fuseki          :: [30] 200 OK (16 ms)
+13:54:44 INFO  Fuseki          :: [31] POST http://localhost:3030/thesis_1/query
+13:54:44 INFO  Fuseki          :: [31] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?subject ?predicate ?object WHERE {     ?subject ?predicate ?object. } LIMIT 10 
+13:54:44 INFO  Fuseki          :: [31] 200 OK (14 ms)
+13:55:05 INFO  Fuseki          :: [32] POST http://localhost:3030/thesis_1/query
+13:55:05 INFO  Fuseki          :: [32] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Johnson_&_Johnson ex:materials ?value. ex:Johnson_&_Johnson ex:supply ?value. } 
+13:55:05 WARN  Fuseki          :: [32] Parse error: Lexical error at line 4, column 13.  Encountered: '95' (95), after prefix "&"
+13:55:05 INFO  Fuseki          :: [32] 400 Bad Request (14 ms)
+13:55:31 INFO  Fuseki          :: [33] POST http://localhost:3030/thesis_1/query
+13:55:31 INFO  Fuseki          :: [33] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:the_United_States ex:products ?value. ex:the_United_States ex:facilities ?value. } 
+13:55:31 INFO  Fuseki          :: [33] 200 OK (14 ms)
+13:56:02 INFO  Fuseki          :: [34] POST http://localhost:3030/thesis_1/query
+13:56:02 INFO  Fuseki          :: [34] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?subject ?predicate ?object WHERE {     ?subject ?predicate ?object. } LIMIT 10 
+13:56:02 INFO  Fuseki          :: [34] 200 OK (13 ms)
+13:56:25 INFO  Fuseki          :: [35] POST http://localhost:3030/thesis_1/query
+13:56:25 INFO  Fuseki          :: [35] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Basel ex:relationship ?value. ex:Basel ex:facilities ?value. ex:Basel ex:products ?value. } 
+13:56:25 INFO  Fuseki          :: [35] 200 OK (13 ms)
+14:01:28 INFO  Fuseki          :: [36] POST http://localhost:3030/thesis_1/query
+14:01:28 INFO  Fuseki          :: [36] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Basel ex:relationship ?value. ex:Basel ex:facilities ?value. ex:Basel ex:products ?value. } 
+14:01:28 INFO  Fuseki          :: [36] 200 OK (14 ms)
+14:02:25 INFO  Fuseki          :: [37] POST http://localhost:3030/thesis_1/query
+14:02:25 INFO  Fuseki          :: [37] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Kenilworth ex:facility ?value. ex:NJ ex:facility ?value. } 
+14:02:25 INFO  Fuseki          :: [37] 200 OK (13 ms)
+14:03:26 INFO  Fuseki          :: [38] POST http://localhost:3030/thesis_1/query
+14:03:26 INFO  Fuseki          :: [38] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Merck_&_Co. ex:batches ?value. ex:Merck_&_Co. ex:supply ?value. ex:Merck_&_Co. ex:months ?value. ex:Ibuprofen ex:batches ?value. ex:Ibuprofen ex:supply ?value. ex:Ibuprofen ex:months ?value. } 
+14:03:26 WARN  Fuseki          :: [38] Parse error: Lexical error at line 4, column 11.  Encountered: '95' (95), after prefix "&"
+14:03:26 INFO  Fuseki          :: [38] 400 Bad Request (1 ms)
+14:03:50 INFO  Fuseki          :: [39] POST http://localhost:3030/thesis_1/query
+14:03:50 INFO  Fuseki          :: [39] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?subject ?predicate ?object WHERE {     ?subject ?predicate ?object. } LIMIT 10 
+14:03:50 INFO  Fuseki          :: [39] 200 OK (14 ms)
+14:04:46 INFO  Fuseki          :: [40] POST http://localhost:3030/thesis_1/query
+14:04:46 INFO  Fuseki          :: [40] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:Newyork ex:relation ?value. ex:germany ex:relation ?value. } 
+14:04:46 INFO  Fuseki          :: [40] 200 OK (13 ms)
+14:34:00 INFO  Fuseki          :: [41] POST http://localhost:3030/thesis_1/query
+14:34:00 INFO  Fuseki          :: [41] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:NJ ex:range ?value. ex:NJ ex:batch ?value. ex:NJ ex:sizes ?value. ex:NJ ex:products ?value. ex:NJ ex:facility ?value. ex:New_Brunswick ex:range ?value. ex:New_Brunswick ex:batch ?value. ex:New_Brunswick ex:sizes ?value. ex:New_Brunswick ex:products ?value. ex:New_Brunswick ex:facility ?value. } 
+14:34:00 INFO  Fuseki          :: [41] 200 OK (14 ms)
+14:38:12 INFO  Fuseki          :: [42] POST http://localhost:3030/thesis_1/query
+14:38:12 INFO  Fuseki          :: [42] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:NJ ex:range ?value. ex:NJ ex:batch ?value. ex:NJ ex:sizes ?value. ex:NJ ex:products ?value. ex:NJ ex:facility ?value. ex:New_Brunswick ex:range ?value. ex:New_Brunswick ex:batch ?value. ex:New_Brunswick ex:sizes ?value. ex:New_Brunswick ex:products ?value. ex:New_Brunswick ex:facility ?value. } 
+14:38:12 INFO  Fuseki          :: [42] 200 OK (14 ms)
+14:39:33 INFO  Fuseki          :: [43] POST http://localhost:3030/thesis_1/query
+14:39:33 INFO  Fuseki          :: [43] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:NJ ex:range ?value. ex:NJ ex:batch ?value. ex:NJ ex:sizes ?value. ex:NJ ex:products ?value. ex:NJ ex:facility ?value. ex:New_Brunswick ex:range ?value. ex:New_Brunswick ex:batch ?value. ex:New_Brunswick ex:sizes ?value. ex:New_Brunswick ex:products ?value. ex:New_Brunswick ex:facility ?value. } 
+14:39:33 INFO  Fuseki          :: [43] 200 OK (14 ms)
+15:52:39 INFO  Fuseki          :: [44] POST http://localhost:3030/thesis_1/query
+15:52:39 INFO  Fuseki          :: [44] Query =  PREFIX ex: <http://example.org/pharma-supply-chain#> SELECT ?value WHERE { ex:NJ ex:range ?value. ex:NJ ex:batch ?value. ex:NJ ex:sizes ?value. ex:NJ ex:products ?value. ex:NJ ex:facility ?value. ex:New_Brunswick ex:range ?value. ex:New_Brunswick ex:batch ?value. ex:New_Brunswick ex:sizes ?value. ex:New_Brunswick ex:products ?value. ex:New_Brunswick ex:facility ?value. } 
+15:52:39 INFO  Fuseki          :: [44] 200 OK (15 ms)
+17:10:43 INFO  Fuseki          :: [45] POST http://localhost:3030/thesis_1/data
+17:10:43 INFO  Fuseki          :: [45] Body: Content-Length=47789, Content-Type=text/turtle, Charset=null => Turtle : Count=1036 Triples=1036 Quads=0
+17:10:43 INFO  Fuseki          :: [45] 200 OK (120 ms)

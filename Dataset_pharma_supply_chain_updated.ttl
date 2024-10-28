@@ -1,0 +1,1234 @@
+@prefix ex: <http://example.org/pharma-supply-chain#> .
+@prefix onto: <http://example.org/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+onto:hasAddress a owl:DatatypeProperty ;
+    rdfs:label "has address" ;
+    rdfs:comment "Links an entity to its address" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( onto:Supplier onto:Facility ) ] ;
+    rdfs:range xsd:string .
+
+onto:hasBatchSize a owl:DatatypeProperty ;
+    rdfs:label "has batch size" ;
+    rdfs:comment "Links a production event to the batch size" ;
+    rdfs:domain onto:ProductionEvent ;
+    rdfs:range xsd:decimal .
+
+onto:hasCertificationStatus a owl:DatatypeProperty ;
+    rdfs:label "has certification status" ;
+    rdfs:comment "Links a supplier to its certification status" ;
+    rdfs:domain onto:Supplier ;
+    rdfs:range xsd:string .
+
+onto:hasContactInformation a owl:DatatypeProperty ;
+    rdfs:label "has contact information" ;
+    rdfs:comment "Links a supplier to its contact information" ;
+    rdfs:domain onto:Supplier ;
+    rdfs:range xsd:string .
+
+onto:hasDate a owl:DatatypeProperty ;
+    rdfs:label "has date" ;
+    rdfs:comment "Links events (supply or production) to dates" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( onto:SupplyEvent onto:ProductionEvent ) ] ;
+    rdfs:range xsd:date .
+
+onto:hasLocation a owl:DatatypeProperty ;
+    rdfs:label "has location" ;
+    rdfs:comment "Links a facility or supplier to its geographical location" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( onto:Facility onto:Supplier ) ] ;
+    rdfs:range xsd:string .
+
+onto:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:comment "Links an entity to its name" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( onto:Supplier onto:Material onto:Product onto:Facility ) ] ;
+    rdfs:range xsd:string .
+
+onto:hasQuantity a owl:DatatypeProperty ;
+    rdfs:label "has quantity" ;
+    rdfs:comment "Links a supply event to the quantity supplied" ;
+    rdfs:domain onto:SupplyEvent ;
+    rdfs:range xsd:decimal .
+
+onto:locatedIn a owl:ObjectProperty ;
+    rdfs:label "located in" ;
+    rdfs:comment "Links an entity (supplier or facility) to its geographical location" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( onto:Supplier onto:Facility ) ] ;
+    rdfs:range onto:Location .
+
+onto:produces a owl:ObjectProperty ;
+    rdfs:label "produces" ;
+    rdfs:comment "Links a facility to a product they produce" ;
+    rdfs:domain onto:Facility ;
+    rdfs:range onto:Product .
+
+onto:supplies a owl:ObjectProperty ;
+    rdfs:label "supplies" ;
+    rdfs:comment "Links a supplier to a material they supply" ;
+    rdfs:domain onto:Supplier ;
+    rdfs:range onto:Material .
+
+<http://example.org/pharma-supply-chain#Facility/F001> a ex:Facility ;
+    ex:hasBatchSize 8000,
+        10000 ;
+    ex:hasDate "2024-02-01T00:00:00"^^xsd:dateTime,
+        "2024-03-01T00:00:00"^^xsd:dateTime ;
+    ex:hasMaterial <http://example.org/pharma-supply-chain#Material/M001>,
+        <http://example.org/pharma-supply-chain#Material/M002> ;
+    ex:locatedIn "New York, NY" ;
+    ex:produces <http://example.org/pharma-supply-chain#Product/P001>,
+        <http://example.org/pharma-supply-chain#Product/P002> .
+
+<http://example.org/pharma-supply-chain#Facility/F002> a ex:Facility ;
+    ex:hasBatchSize 7000,
+        15000 ;
+    ex:hasDate "2024-04-01T00:00:00"^^xsd:dateTime,
+        "2024-08-01T00:00:00"^^xsd:dateTime ;
+    ex:hasMaterial <http://example.org/pharma-supply-chain#Material/M002>,
+        <http://example.org/pharma-supply-chain#Material/M003> ;
+    ex:locatedIn "Kenilworth, NJ" ;
+    ex:produces <http://example.org/pharma-supply-chain#Product/P002>,
+        <http://example.org/pharma-supply-chain#Product/P003> .
+
+<http://example.org/pharma-supply-chain#Facility/F003> a ex:Facility ;
+    ex:hasBatchSize 12000,
+        14000 ;
+    ex:hasDate "2024-05-01T00:00:00"^^xsd:dateTime,
+        "2024-09-01T00:00:00"^^xsd:dateTime ;
+    ex:hasMaterial <http://example.org/pharma-supply-chain#Material/M003>,
+        <http://example.org/pharma-supply-chain#Material/M004> ;
+    ex:locatedIn "Basel, CH" ;
+    ex:produces <http://example.org/pharma-supply-chain#Product/P003>,
+        <http://example.org/pharma-supply-chain#Product/P004> .
+
+<http://example.org/pharma-supply-chain#Facility/F004> a ex:Facility ;
+    ex:hasBatchSize 10000,
+        11000 ;
+    ex:hasDate "2024-06-01T00:00:00"^^xsd:dateTime,
+        "2024-10-01T00:00:00"^^xsd:dateTime ;
+    ex:hasMaterial <http://example.org/pharma-supply-chain#Material/M004>,
+        <http://example.org/pharma-supply-chain#Material/M005> ;
+    ex:locatedIn "New Brunswick, NJ" ;
+    ex:produces <http://example.org/pharma-supply-chain#Product/P004>,
+        <http://example.org/pharma-supply-chain#Product/P005> .
+
+<http://example.org/pharma-supply-chain#Facility/F005> a ex:Facility ;
+    ex:hasBatchSize 9000,
+        13000 ;
+    ex:hasDate "2024-07-01T00:00:00"^^xsd:dateTime,
+        "2024-11-01T00:00:00"^^xsd:dateTime ;
+    ex:hasMaterial <http://example.org/pharma-supply-chain#Material/M001>,
+        <http://example.org/pharma-supply-chain#Material/M005> ;
+    ex:locatedIn "Basel, CH" ;
+    ex:produces <http://example.org/pharma-supply-chain#Product/P001>,
+        <http://example.org/pharma-supply-chain#Product/P005> .
+
+<http://example.org/pharma-supply-chain#Facility/S001> a ex:Facility ;
+    ex:location "New York, NY" ;
+    ex:name "S001" .
+
+<http://example.org/pharma-supply-chain#Facility/S002> a ex:Facility ;
+    ex:location "Kenilworth, NJ" ;
+    ex:name "S002" .
+
+<http://example.org/pharma-supply-chain#Facility/S003> a ex:Facility ;
+    ex:location "Basel, CH" ;
+    ex:name "S003" .
+
+<http://example.org/pharma-supply-chain#Facility/S004> a ex:Facility ;
+    ex:location "New Brunswick, NJ" ;
+    ex:name "S004" .
+
+<http://example.org/pharma-supply-chain#Facility/S005> a ex:Facility ;
+    ex:location "Basel, CH" ;
+    ex:name "S005" .
+
+<http://example.org/pharma-supply-chain#Facility/S006> a ex:Facility ;
+    ex:location "Thousand Oaks, CA" ;
+    ex:name "S006" .
+
+<http://example.org/pharma-supply-chain#Facility/S007> a ex:Facility ;
+    ex:location "Brentford, UK" ;
+    ex:name "S007" .
+
+<http://example.org/pharma-supply-chain#Facility/S008> a ex:Facility ;
+    ex:location "Paris, FR" ;
+    ex:name "S008" .
+
+<http://example.org/pharma-supply-chain#Facility/S009> a ex:Facility ;
+    ex:location "Cambridge, UK" ;
+    ex:name "S009" .
+
+<http://example.org/pharma-supply-chain#Facility/S010> a ex:Facility ;
+    ex:location "Indianapolis, IN" ;
+    ex:name "S010" .
+
+<http://example.org/pharma-supply-chain#Facility/S011> a ex:Facility ;
+    ex:location "New York, NY" ;
+    ex:name "S011" .
+
+<http://example.org/pharma-supply-chain#Facility/S012> a ex:Facility ;
+    ex:location "North Chicago, IL" ;
+    ex:name "S012" .
+
+<http://example.org/pharma-supply-chain#Facility/S013> a ex:Facility ;
+    ex:location "Leverkusen, DE" ;
+    ex:name "S013" .
+
+<http://example.org/pharma-supply-chain#Facility/S014> a ex:Facility ;
+    ex:location "Ingelheim, DE" ;
+    ex:name "S014" .
+
+<http://example.org/pharma-supply-chain#Facility/S015> a ex:Facility ;
+    ex:location "Petah Tikva, IL" ;
+    ex:name "S015" .
+
+<http://example.org/pharma-supply-chain#Facility/S016> a ex:Facility ;
+    ex:location "Tokyo, JP" ;
+    ex:name "S016" .
+
+<http://example.org/pharma-supply-chain#Facility/S017> a ex:Facility ;
+    ex:location "Tokyo, JP" ;
+    ex:name "S017" .
+
+<http://example.org/pharma-supply-chain#Facility/S018> a ex:Facility ;
+    ex:location "Bagsværd, DK" ;
+    ex:name "S018" .
+
+<http://example.org/pharma-supply-chain#Facility/S019> a ex:Facility ;
+    ex:location "King of Prussia, PA" ;
+    ex:name "S019" .
+
+<http://example.org/pharma-supply-chain#Facility/S020> a ex:Facility ;
+    ex:location "Cambridge, MA" ;
+    ex:name "S020" .
+
+<http://example.org/pharma-supply-chain#Facility/S021> a ex:Facility ;
+    ex:location "Deerfield, IL" ;
+    ex:name "S021" .
+
+<http://example.org/pharma-supply-chain#Facility/S022> a ex:Facility ;
+    ex:location "Tarrytown, NY" ;
+    ex:name "S022" .
+
+<http://example.org/pharma-supply-chain#Facility/S023> a ex:Facility ;
+    ex:location "Boston, MA" ;
+    ex:name "S023" .
+
+<http://example.org/pharma-supply-chain#Facility/S024> a ex:Facility ;
+    ex:location "Dublin, IE" ;
+    ex:name "S024" .
+
+<http://example.org/pharma-supply-chain#Facility/S025> a ex:Facility ;
+    ex:location "Foster City, CA" ;
+    ex:name "S025" .
+
+<http://example.org/pharma-supply-chain#Facility/S026> a ex:Facility ;
+    ex:location "Malvern, PA" ;
+    ex:name "S026" .
+
+<http://example.org/pharma-supply-chain#Facility/S027> a ex:Facility ;
+    ex:location "St. Louis, MO" ;
+    ex:name "S027" .
+
+<http://example.org/pharma-supply-chain#Facility/S028> a ex:Facility ;
+    ex:location "Morgantown, WV" ;
+    ex:name "S028" .
+
+<http://example.org/pharma-supply-chain#Facility/S029> a ex:Facility ;
+    ex:location "Mumbai, IN" ;
+    ex:name "S029" .
+
+<http://example.org/pharma-supply-chain#Facility/S030> a ex:Facility ;
+    ex:location "Mumbai, IN" ;
+    ex:name "S030" .
+
+<http://example.org/pharma-supply-chain#Facility/S031> a ex:Facility ;
+    ex:location "Hyderabad, IN" ;
+    ex:name "S031" .
+
+<http://example.org/pharma-supply-chain#Facility/S032> a ex:Facility ;
+    ex:location "Mumbai, IN" ;
+    ex:name "S032" .
+
+<http://example.org/pharma-supply-chain#Facility/S033> a ex:Facility ;
+    ex:location "London, UK" ;
+    ex:name "S033" .
+
+<http://example.org/pharma-supply-chain#Facility/S034> a ex:Facility ;
+    ex:location "Mumbai, IN" ;
+    ex:name "S034" .
+
+<http://example.org/pharma-supply-chain#Facility/S035> a ex:Facility ;
+    ex:location "Mumbai, IN" ;
+    ex:name "S035" .
+
+<http://example.org/pharma-supply-chain#Facility/S036> a ex:Facility ;
+    ex:location "Mumbai, IN" ;
+    ex:name "S036" .
+
+<http://example.org/pharma-supply-chain#Facility/S037> a ex:Facility ;
+    ex:location "Ahmedabad, IN" ;
+    ex:name "S037" .
+
+<http://example.org/pharma-supply-chain#Facility/S038> a ex:Facility ;
+    ex:location "Mumbai, IN" ;
+    ex:name "S038" .
+
+<http://example.org/pharma-supply-chain#Facility/S039> a ex:Facility ;
+    ex:location "Hyderabad, IN" ;
+    ex:name "S039" .
+
+<http://example.org/pharma-supply-chain#Facility/S040> a ex:Facility ;
+    ex:location "Ahmedabad, IN" ;
+    ex:name "S040" .
+
+<http://example.org/pharma-supply-chain#Facility/S041> a ex:Facility ;
+    ex:location "Ahmedabad, IN" ;
+    ex:name "S041" .
+
+<http://example.org/pharma-supply-chain#Facility/S042> a ex:Facility ;
+    ex:location "Bangalore, IN" ;
+    ex:name "S042" .
+
+<http://example.org/pharma-supply-chain#Facility/S043> a ex:Facility ;
+    ex:location "Hyderabad, IN" ;
+    ex:name "S043" .
+
+<http://example.org/pharma-supply-chain#Facility/S044> a ex:Facility ;
+    ex:location "Mumbai, IN" ;
+    ex:name "S044" .
+
+<http://example.org/pharma-supply-chain#Facility/S045> a ex:Facility ;
+    ex:location "Vadodara, IN" ;
+    ex:name "S045" .
+
+<http://example.org/pharma-supply-chain#Facility/S046> a ex:Facility ;
+    ex:location "Paramus, NJ" ;
+    ex:name "S046" .
+
+<http://example.org/pharma-supply-chain#Facility/S047> a ex:Facility ;
+    ex:location "Noida, IN" ;
+    ex:name "S047" .
+
+<http://example.org/pharma-supply-chain#Facility/S048> a ex:Facility ;
+    ex:location "Toronto, CA" ;
+    ex:name "S048" .
+
+<http://example.org/pharma-supply-chain#Facility/S049> a ex:Facility ;
+    ex:location "Malvern, PA" ;
+    ex:name "S049" .
+
+<http://example.org/pharma-supply-chain#Facility/S050> a ex:Facility ;
+    ex:location "New Delhi, IN" ;
+    ex:name "S050" .
+
+<http://example.org/pharma-supply-chain#Material/M006> a ex:Material ;
+    ex:description "Diabetes medication" ;
+    ex:name "Metformin" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M007> a ex:Material ;
+    ex:description "Cholesterol medication" ;
+    ex:name "Simvastatin" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M008> a ex:Material ;
+    ex:description "Antibiotic" ;
+    ex:name "Azithromycin" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M009> a ex:Material ;
+    ex:description "Proton pump inhibitor" ;
+    ex:name "Omeprazole" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M010> a ex:Material ;
+    ex:description "Thyroid hormone" ;
+    ex:name "Levothyroxine" ;
+    ex:specifications "Purity: 95%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M011> a ex:Material ;
+    ex:description "Angiotensin II receptor antagonist" ;
+    ex:name "Losartan" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M012> a ex:Material ;
+    ex:description "Bronchodilator" ;
+    ex:name "Albuterol" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M013> a ex:Material ;
+    ex:description "ACE inhibitor" ;
+    ex:name "Lisinopril" ;
+    ex:specifications "Purity: 96%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M014> a ex:Material ;
+    ex:description "Antiplatelet" ;
+    ex:name "Clopidogrel" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M015> a ex:Material ;
+    ex:description "Proton pump inhibitor" ;
+    ex:name "Pantoprazole" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M016> a ex:Material ;
+    ex:description "Cholesterol medication" ;
+    ex:name "Atorvastatin" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M017> a ex:Material ;
+    ex:description "Diuretic" ;
+    ex:name "Hydrochlorothiazide" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M018> a ex:Material ;
+    ex:description "Anticonvulsant" ;
+    ex:name "Gabapentin" ;
+    ex:specifications "Purity: 96%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M019> a ex:Material ;
+    ex:description "Beta blocker" ;
+    ex:name "Metoprolol" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M020> a ex:Material ;
+    ex:description "Antidepressant" ;
+    ex:name "Fluoxetine" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M021> a ex:Material ;
+    ex:description "Anticoagulant" ;
+    ex:name "Warfarin" ;
+    ex:specifications "Purity: 95%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M022> a ex:Material ;
+    ex:description "Alpha-blocker" ;
+    ex:name "Tamsulosin" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M023> a ex:Material ;
+    ex:description "Antibiotic" ;
+    ex:name "Doxycycline" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M024> a ex:Material ;
+    ex:description "Corticosteroid" ;
+    ex:name "Prednisone" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M025> a ex:Material ;
+    ex:description "Antihistamine" ;
+    ex:name "Loratadine" ;
+    ex:specifications "Purity: 96%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M026> a ex:Material ;
+    ex:description "Beta blocker" ;
+    ex:name "Carvedilol" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M027> a ex:Material ;
+    ex:description "Antibiotic" ;
+    ex:name "Clindamycin" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M028> a ex:Material ;
+    ex:description "Alzheimer's medication" ;
+    ex:name "Donepezil" ;
+    ex:specifications "Purity: 96%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M029> a ex:Material ;
+    ex:description "Antipsychotic" ;
+    ex:name "Quetiapine" ;
+    ex:specifications "Purity: 95%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M030> a ex:Material ;
+    ex:description "Nonsteroidal anti-inflammatory drug" ;
+    ex:name "Naproxen" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M031> a ex:Material ;
+    ex:description "Anticonvulsant" ;
+    ex:name "Lamotrigine" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M032> a ex:Material ;
+    ex:description "Diabetes medication" ;
+    ex:name "Glimepiride" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M033> a ex:Material ;
+    ex:description "Antipsychotic" ;
+    ex:name "Risperidone" ;
+    ex:specifications "Purity: 95%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M034> a ex:Material ;
+    ex:description "Leukotriene receptor antagonist" ;
+    ex:name "Montelukast" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M035> a ex:Material ;
+    ex:description "Histamine-2 blocker" ;
+    ex:name "Famotidine" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M036> a ex:Material ;
+    ex:description "Chemotherapy agent" ;
+    ex:name "Methotrexate" ;
+    ex:specifications "Purity: 96%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M037> a ex:Material ;
+    ex:description "Antihistamine" ;
+    ex:name "Cetirizine" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M038> a ex:Material ;
+    ex:description "Proton pump inhibitor" ;
+    ex:name "Esomeprazole" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M039> a ex:Material ;
+    ex:description "Antiviral" ;
+    ex:name "Valacyclovir" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M040> a ex:Material ;
+    ex:description "Anticonvulsant" ;
+    ex:name "Topiramate" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M041> a ex:Material ;
+    ex:description "Anticonvulsant" ;
+    ex:name "Levetiracetam" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M042> a ex:Material ;
+    ex:description "Histamine-2 blocker" ;
+    ex:name "Ranitidine" ;
+    ex:specifications "Purity: 95%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M043> a ex:Material ;
+    ex:description "Anticonvulsant" ;
+    ex:name "Clonazepam" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M044> a ex:Material ;
+    ex:description "Beta blocker" ;
+    ex:name "Propranolol" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M045> a ex:Material ;
+    ex:description "Cardiac glycoside" ;
+    ex:name "Digoxin" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M046> a ex:Material ;
+    ex:description "Antibiotic" ;
+    ex:name "Cefdinir" ;
+    ex:specifications "Purity: 96%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M047> a ex:Material ;
+    ex:description "Antidepressant" ;
+    ex:name "Mirtazapine" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M048> a ex:Material ;
+    ex:description "Cholesterol medication" ;
+    ex:name "Gemfibrozil" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M049> a ex:Material ;
+    ex:description "Beta blocker" ;
+    ex:name "Atenolol" ;
+    ex:specifications "Purity: 96%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M050> a ex:Material ;
+    ex:description "Vitamin" ;
+    ex:name "Folic Acid" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Product/P006> a ex:Product ;
+    ex:batchNumber "B56789" ;
+    ex:description "Diabetes medication" ;
+    ex:expiryDate "2024-08-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Glucophage" .
+
+<http://example.org/pharma-supply-chain#Product/P007> a ex:Product ;
+    ex:batchNumber "B67890" ;
+    ex:description "Cholesterol medication" ;
+    ex:expiryDate "2025-07-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Zocor" .
+
+<http://example.org/pharma-supply-chain#Product/P008> a ex:Product ;
+    ex:batchNumber "B78901" ;
+    ex:description "Antibiotic" ;
+    ex:expiryDate "2024-06-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Zithromax" .
+
+<http://example.org/pharma-supply-chain#Product/P009> a ex:Product ;
+    ex:batchNumber "B89012" ;
+    ex:description "Acid reducer" ;
+    ex:expiryDate "2025-05-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Prilosec" .
+
+<http://example.org/pharma-supply-chain#Product/P010> a ex:Product ;
+    ex:batchNumber "B90123" ;
+    ex:description "Thyroid hormone" ;
+    ex:expiryDate "2024-04-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Synthroid" .
+
+<http://example.org/pharma-supply-chain#Product/P011> a ex:Product ;
+    ex:batchNumber "B12346" ;
+    ex:description "Blood pressure medication" ;
+    ex:expiryDate "2025-03-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Cozaar" .
+
+<http://example.org/pharma-supply-chain#Product/P012> a ex:Product ;
+    ex:batchNumber "B23457" ;
+    ex:description "Asthma inhaler" ;
+    ex:expiryDate "2024-02-29T00:00:00"^^xsd:dateTime ;
+    ex:name "ProAir HFA" .
+
+<http://example.org/pharma-supply-chain#Product/P013> a ex:Product ;
+    ex:batchNumber "B34568" ;
+    ex:description "Blood pressure medication" ;
+    ex:expiryDate "2025-01-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Prinivil" .
+
+<http://example.org/pharma-supply-chain#Product/P014> a ex:Product ;
+    ex:batchNumber "B45679" ;
+    ex:description "Blood thinner" ;
+    ex:expiryDate "2024-12-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Plavix" .
+
+<http://example.org/pharma-supply-chain#Product/P015> a ex:Product ;
+    ex:batchNumber "B56780" ;
+    ex:description "Acid reducer" ;
+    ex:expiryDate "2025-11-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Protonix" .
+
+<http://example.org/pharma-supply-chain#Product/P016> a ex:Product ;
+    ex:batchNumber "B67891" ;
+    ex:description "Cholesterol medication" ;
+    ex:expiryDate "2024-10-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Lipitor" .
+
+<http://example.org/pharma-supply-chain#Product/P017> a ex:Product ;
+    ex:batchNumber "B78902" ;
+    ex:description "Diuretic" ;
+    ex:expiryDate "2025-09-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Microzide" .
+
+<http://example.org/pharma-supply-chain#Product/P018> a ex:Product ;
+    ex:batchNumber "B89013" ;
+    ex:description "Seizure medication" ;
+    ex:expiryDate "2024-08-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Neurontin" .
+
+<http://example.org/pharma-supply-chain#Product/P019> a ex:Product ;
+    ex:batchNumber "B90124" ;
+    ex:description "Blood pressure medication" ;
+    ex:expiryDate "2025-07-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Lopressor" .
+
+<http://example.org/pharma-supply-chain#Product/P020> a ex:Product ;
+    ex:batchNumber "B12347" ;
+    ex:description "Antidepressant" ;
+    ex:expiryDate "2024-06-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Prozac" .
+
+<http://example.org/pharma-supply-chain#Product/P021> a ex:Product ;
+    ex:batchNumber "B23458" ;
+    ex:description "Blood thinner" ;
+    ex:expiryDate "2025-05-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Coumadin" .
+
+<http://example.org/pharma-supply-chain#Product/P022> a ex:Product ;
+    ex:batchNumber "B34569" ;
+    ex:description "Urinary retention medication" ;
+    ex:expiryDate "2024-04-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Flomax" .
+
+<http://example.org/pharma-supply-chain#Product/P023> a ex:Product ;
+    ex:batchNumber "B45680" ;
+    ex:description "Antibiotic" ;
+    ex:expiryDate "2025-03-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Doryx" .
+
+<http://example.org/pharma-supply-chain#Product/P024> a ex:Product ;
+    ex:batchNumber "B56791" ;
+    ex:description "Anti-inflammatory" ;
+    ex:expiryDate "2024-02-29T00:00:00"^^xsd:dateTime ;
+    ex:name "Deltasone" .
+
+<http://example.org/pharma-supply-chain#Product/P025> a ex:Product ;
+    ex:batchNumber "B67892" ;
+    ex:description "Allergy relief" ;
+    ex:expiryDate "2025-01-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Claritin" .
+
+<http://example.org/pharma-supply-chain#Product/P026> a ex:Product ;
+    ex:batchNumber "B78903" ;
+    ex:description "Blood pressure medication" ;
+    ex:expiryDate "2024-12-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Coreg" .
+
+<http://example.org/pharma-supply-chain#Product/P027> a ex:Product ;
+    ex:batchNumber "B89014" ;
+    ex:description "Antibiotic" ;
+    ex:expiryDate "2025-11-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Cleocin" .
+
+<http://example.org/pharma-supply-chain#Product/P028> a ex:Product ;
+    ex:batchNumber "B90125" ;
+    ex:description "Alzheimer's medication" ;
+    ex:expiryDate "2024-10-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Aricept" .
+
+<http://example.org/pharma-supply-chain#Product/P029> a ex:Product ;
+    ex:batchNumber "B12348" ;
+    ex:description "Antipsychotic" ;
+    ex:expiryDate "2025-09-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Seroquel" .
+
+<http://example.org/pharma-supply-chain#Product/P030> a ex:Product ;
+    ex:batchNumber "B23459" ;
+    ex:description "Pain reliever" ;
+    ex:expiryDate "2024-08-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Aleve" .
+
+<http://example.org/pharma-supply-chain#Product/P031> a ex:Product ;
+    ex:batchNumber "B34570" ;
+    ex:description "Seizure medication" ;
+    ex:expiryDate "2025-07-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Lamictal" .
+
+<http://example.org/pharma-supply-chain#Product/P032> a ex:Product ;
+    ex:batchNumber "B45681" ;
+    ex:description "Diabetes medication" ;
+    ex:expiryDate "2024-06-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Amaryl" .
+
+<http://example.org/pharma-supply-chain#Product/P033> a ex:Product ;
+    ex:batchNumber "B56792" ;
+    ex:description "Antipsychotic" ;
+    ex:expiryDate "2025-05-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Risperdal" .
+
+<http://example.org/pharma-supply-chain#Product/P034> a ex:Product ;
+    ex:batchNumber "B67893" ;
+    ex:description "Allergy and asthma relief" ;
+    ex:expiryDate "2024-04-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Singulair" .
+
+<http://example.org/pharma-supply-chain#Product/P035> a ex:Product ;
+    ex:batchNumber "B78904" ;
+    ex:description "Acid reducer" ;
+    ex:expiryDate "2025-03-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Pepcid" .
+
+<http://example.org/pharma-supply-chain#Product/P036> a ex:Product ;
+    ex:batchNumber "B89015" ;
+    ex:description "Chemotherapy agent" ;
+    ex:expiryDate "2024-02-29T00:00:00"^^xsd:dateTime ;
+    ex:name "Rheumatrex" .
+
+<http://example.org/pharma-supply-chain#Product/P037> a ex:Product ;
+    ex:batchNumber "B90126" ;
+    ex:description "Allergy relief" ;
+    ex:expiryDate "2025-01-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Allegra" .
+
+<http://example.org/pharma-supply-chain#Product/P038> a ex:Product ;
+    ex:batchNumber "B12349" ;
+    ex:description "Acid reducer" ;
+    ex:expiryDate "2024-12-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Nexium" .
+
+<http://example.org/pharma-supply-chain#Product/P039> a ex:Product ;
+    ex:batchNumber "B23460" ;
+    ex:description "Antiviral" ;
+    ex:expiryDate "2025-11-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Valtrex" .
+
+<http://example.org/pharma-supply-chain#Product/P040> a ex:Product ;
+    ex:batchNumber "B34571" ;
+    ex:description "Seizure medication" ;
+    ex:expiryDate "2024-10-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Topamax" .
+
+<http://example.org/pharma-supply-chain#Product/P041> a ex:Product ;
+    ex:batchNumber "B45682" ;
+    ex:description "Seizure medication" ;
+    ex:expiryDate "2025-09-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Keppra" .
+
+<http://example.org/pharma-supply-chain#Product/P042> a ex:Product ;
+    ex:batchNumber "B56793" ;
+    ex:description "Acid reducer" ;
+    ex:expiryDate "2024-08-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Zantac" .
+
+<http://example.org/pharma-supply-chain#Product/P043> a ex:Product ;
+    ex:batchNumber "B67894" ;
+    ex:description "Seizure medication" ;
+    ex:expiryDate "2025-07-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Klonopin" .
+
+<http://example.org/pharma-supply-chain#Product/P044> a ex:Product ;
+    ex:batchNumber "B78905" ;
+    ex:description "Blood pressure medication" ;
+    ex:expiryDate "2024-06-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Inderal" .
+
+<http://example.org/pharma-supply-chain#Product/P045> a ex:Product ;
+    ex:batchNumber "B89016" ;
+    ex:description "Heart medication" ;
+    ex:expiryDate "2025-05-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Lanoxin" .
+
+<http://example.org/pharma-supply-chain#Product/P046> a ex:Product ;
+    ex:batchNumber "B90127" ;
+    ex:description "Antibiotic" ;
+    ex:expiryDate "2024-04-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Omnicef" .
+
+<http://example.org/pharma-supply-chain#Product/P047> a ex:Product ;
+    ex:batchNumber "B12350" ;
+    ex:description "Antidepressant" ;
+    ex:expiryDate "2025-03-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Remeron" .
+
+<http://example.org/pharma-supply-chain#Product/P048> a ex:Product ;
+    ex:batchNumber "B23461" ;
+    ex:description "Cholesterol medication" ;
+    ex:expiryDate "2024-02-29T00:00:00"^^xsd:dateTime ;
+    ex:name "Lopid" .
+
+<http://example.org/pharma-supply-chain#Product/P049> a ex:Product ;
+    ex:batchNumber "B34572" ;
+    ex:description "Blood pressure medication" ;
+    ex:expiryDate "2025-01-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Tenormin" .
+
+<http://example.org/pharma-supply-chain#Product/P050> a ex:Product ;
+    ex:batchNumber "B45683" ;
+    ex:description "Vitamin" ;
+    ex:expiryDate "2024-12-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Folacin" .
+
+<http://example.org/pharma-supply-chain#Supplier/S001> a ex:Supplier ;
+    ex:address "235 East 42nd Street, New York, NY" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-212-733-2323, info@pfizer.com" ;
+    ex:hasDate "2024-01-15T00:00:00"^^xsd:dateTime,
+        "2024-02-10T00:00:00"^^xsd:dateTime,
+        "2024-03-10T00:00:00"^^xsd:dateTime ;
+    ex:hasQuantity 300,
+        450,
+        500 ;
+    ex:locatedIn "New York, NY" ;
+    ex:name "Pfizer" ;
+    ex:supplies <http://example.org/pharma-supply-chain#Material/M001>,
+        <http://example.org/pharma-supply-chain#Material/M002>,
+        <http://example.org/pharma-supply-chain#Material/M003> .
+
+<http://example.org/pharma-supply-chain#Supplier/S002> a ex:Supplier ;
+    ex:address "2000 Galloping Hill Road, NJ" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-908-740-4000, info@merck.com" ;
+    ex:hasDate "2024-01-20T00:00:00"^^xsd:dateTime,
+        "2024-02-15T00:00:00"^^xsd:dateTime,
+        "2024-04-20T00:00:00"^^xsd:dateTime ;
+    ex:hasQuantity 400,
+        500,
+        600 ;
+    ex:locatedIn "Kenilworth, NJ" ;
+    ex:name "Merck & Co." ;
+    ex:supplies <http://example.org/pharma-supply-chain#Material/M001>,
+        <http://example.org/pharma-supply-chain#Material/M003>,
+        <http://example.org/pharma-supply-chain#Material/M004> .
+
+<http://example.org/pharma-supply-chain#Supplier/S003> a ex:Supplier ;
+    ex:address "Grenzacherstrasse 124, Basel, CH" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+41-61-688-1111, info@roche.com" ;
+    ex:hasDate "2024-03-01T00:00:00"^^xsd:dateTime,
+        "2024-05-15T00:00:00"^^xsd:dateTime ;
+    ex:hasQuantity 200,
+        300 ;
+    ex:locatedIn "Basel, CH" ;
+    ex:name "Roche" ;
+    ex:supplies <http://example.org/pharma-supply-chain#Material/M001>,
+        <http://example.org/pharma-supply-chain#Material/M004> .
+
+<http://example.org/pharma-supply-chain#Supplier/S004> a ex:Supplier ;
+    ex:address "One Johnson & Johnson Plaza, NJ" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-732-524-0400, info@jnj.com" ;
+    ex:hasDate "2024-01-25T00:00:00"^^xsd:dateTime ;
+    ex:hasQuantity 350 ;
+    ex:locatedIn "New Brunswick, NJ" ;
+    ex:name "Johnson & Johnson" ;
+    ex:supplies <http://example.org/pharma-supply-chain#Material/M002> .
+
+<http://example.org/pharma-supply-chain#Supplier/S005> a ex:Supplier ;
+    ex:address "Lichtstrasse 35, Basel, CH" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+41-61-324-1111, info@novartis.com" ;
+    ex:hasDate "2024-02-05T00:00:00"^^xsd:dateTime ;
+    ex:hasQuantity 150 ;
+    ex:locatedIn "Basel, CH" ;
+    ex:name "Novartis" ;
+    ex:supplies <http://example.org/pharma-supply-chain#Material/M005> .
+
+<http://example.org/pharma-supply-chain#Supplier/S006> a ex:Supplier ;
+    ex:address "One Amgen Center Drive, CA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-805-447-1000, info@amgen.com" ;
+    ex:name "Amgen" .
+
+<http://example.org/pharma-supply-chain#Supplier/S007> a ex:Supplier ;
+    ex:address "980 Great West Road, Brentford, UK" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+44-20-8047-5000, info@gsk.com" ;
+    ex:name "GlaxoSmithKline" .
+
+<http://example.org/pharma-supply-chain#Supplier/S008> a ex:Supplier ;
+    ex:address "54 Rue La Boétie, Paris, FR" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+33-1-53-77-40-00, info@sanofi.com" ;
+    ex:name "Sanofi" .
+
+<http://example.org/pharma-supply-chain#Supplier/S009> a ex:Supplier ;
+    ex:address "1 Francis Crick Avenue, UK" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+44-20-3749-5000, info@astrazeneca.com" ;
+    ex:name "AstraZeneca" .
+
+<http://example.org/pharma-supply-chain#Supplier/S010> a ex:Supplier ;
+    ex:address "Lilly Corporate Center, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-317-276-2000, info@lilly.com" ;
+    ex:name "Eli Lilly and Company" .
+
+<http://example.org/pharma-supply-chain#Supplier/S011> a ex:Supplier ;
+    ex:address "430 E. 29th Street, NY" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-212-546-4000, info@bms.com" ;
+    ex:name "Bristol-Myers Squibb" .
+
+<http://example.org/pharma-supply-chain#Supplier/S012> a ex:Supplier ;
+    ex:address "1 N Waukegan Rd, IL" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-847-932-7900, info@abbvie.com" ;
+    ex:name "AbbVie" .
+
+<http://example.org/pharma-supply-chain#Supplier/S013> a ex:Supplier ;
+    ex:address "Kaiser-Wilhelm-Allee 1, Leverkusen, DE" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+49-214-30-1, info@bayer.com" ;
+    ex:name "Bayer" .
+
+<http://example.org/pharma-supply-chain#Supplier/S014> a ex:Supplier ;
+    ex:address "Binger Strasse 173, Ingelheim, DE" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+49-6132-77-0, info@boehringer-ingelheim.com" ;
+    ex:name "Boehringer Ingelheim" .
+
+<http://example.org/pharma-supply-chain#Supplier/S015> a ex:Supplier ;
+    ex:address "5 Basel Street, Petah Tikva, IL" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+972-3-914-8171, info@tevapharm.com" ;
+    ex:name "Teva Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Supplier/S016> a ex:Supplier ;
+    ex:address "1-1, Nihonbashi-Honcho 2-chome, JP" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+81-3-3278-2111, info@takeda.com" ;
+    ex:name "Takeda Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Supplier/S017> a ex:Supplier ;
+    ex:address "2-5-1 Nihonbashi-Honcho, JP" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+81-3-3244-3000, info@astellas.com" ;
+    ex:name "Astellas Pharma" .
+
+<http://example.org/pharma-supply-chain#Supplier/S018> a ex:Supplier ;
+    ex:address "Novo Allé, Bagsværd, DK" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+45-4444-8888, info@novonordisk.com" ;
+    ex:name "Novo Nordisk" .
+
+<http://example.org/pharma-supply-chain#Supplier/S019> a ex:Supplier ;
+    ex:address "1020 First Avenue, PA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-610-878-4000, info@cslbehring.com" ;
+    ex:name "CSL Behring" .
+
+<http://example.org/pharma-supply-chain#Supplier/S020> a ex:Supplier ;
+    ex:address "225 Binney Street, MA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-617-679-2000, info@biogen.com" ;
+    ex:name "Biogen" .
+
+<http://example.org/pharma-supply-chain#Supplier/S021> a ex:Supplier ;
+    ex:address "One Baxter Parkway, IL" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-224-948-2000, info@baxter.com" ;
+    ex:name "Baxter International" .
+
+<http://example.org/pharma-supply-chain#Supplier/S022> a ex:Supplier ;
+    ex:address "777 Old Saw Mill River Rd, NY" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-914-847-7000, info@regeneron.com" ;
+    ex:name "Regeneron Pharmaceuticals" .
+
+<http://example.org/pharma-supply-chain#Supplier/S023> a ex:Supplier ;
+    ex:address "50 Northern Avenue, MA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-617-341-6100, info@vrtx.com" ;
+    ex:name "Vertex Pharmaceuticals" .
+
+<http://example.org/pharma-supply-chain#Supplier/S024> a ex:Supplier ;
+    ex:address "5 Riverwalk, Dublin, IE" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+353-1-123-4567, info@shire.com" ;
+    ex:name "Shire" .
+
+<http://example.org/pharma-supply-chain#Supplier/S025> a ex:Supplier ;
+    ex:address "333 Lakeside Drive, CA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-650-574-3000, info@gilead.com" ;
+    ex:name "Gilead Sciences" .
+
+<http://example.org/pharma-supply-chain#Supplier/S026> a ex:Supplier ;
+    ex:address "1400 Atwater Drive, PA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-484-216-0000, info@endo.com" ;
+    ex:name "Endo International" .
+
+<http://example.org/pharma-supply-chain#Supplier/S027> a ex:Supplier ;
+    ex:address "675 McDonnell Blvd, MO" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-314-654-2000, info@mallinckrodt.com" ;
+    ex:name "Mallinckrodt" .
+
+<http://example.org/pharma-supply-chain#Supplier/S028> a ex:Supplier ;
+    ex:address "1000 Mylan Boulevard, WV" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-304-599-2595, info@mylan.com" ;
+    ex:name "Mylan" .
+
+<http://example.org/pharma-supply-chain#Supplier/S029> a ex:Supplier ;
+    ex:address "Acme Plaza, Andheri-Kurla Road, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-22-4324-4324, info@sunpharma.com" ;
+    ex:name "Sun Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Supplier/S030> a ex:Supplier ;
+    ex:address "Mumbai Central, Mumbai, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-22-2302-2310, info@cipla.com" ;
+    ex:name "Cipla" .
+
+<http://example.org/pharma-supply-chain#Supplier/S031> a ex:Supplier ;
+    ex:address "Banjara Hills, Hyderabad, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-40-4900-2900, info@drreddys.com" ;
+    ex:name "Dr. Reddy's Laboratories" .
+
+<http://example.org/pharma-supply-chain#Supplier/S032> a ex:Supplier ;
+    ex:address "Bandra Kurla Complex, Mumbai, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-22-6640-2222, info@lupin.com" ;
+    ex:name "Lupin Limited" .
+
+<http://example.org/pharma-supply-chain#Supplier/S033> a ex:Supplier ;
+    ex:address "1 New Burlington Place, London, UK" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+44-20-7399-2760, info@hikma.com" ;
+    ex:name "Hikma Pharmaceuticals" .
+
+<http://example.org/pharma-supply-chain#Supplier/S034> a ex:Supplier ;
+    ex:address "Lower Parel, Mumbai, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-22-3046-6000, info@piramal.com" ;
+    ex:name "Piramal Enterprises" .
+
+<http://example.org/pharma-supply-chain#Supplier/S035> a ex:Supplier ;
+    ex:address "Senapati Bapat Marg, Mumbai, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-22-3982-9999, info@alkem.com" ;
+    ex:name "Alkem Laboratories" .
+
+<http://example.org/pharma-supply-chain#Supplier/S036> a ex:Supplier ;
+    ex:address "Andheri East, Mumbai, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-22-4018-9999, info@glenmark.com" ;
+    ex:name "Glenmark Pharmaceuticals" .
+
+<http://example.org/pharma-supply-chain#Supplier/S037> a ex:Supplier ;
+    ex:address "Sarkhej-Dholka Road, Ahmedabad, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-79-2686-8100, info@zydus.com" ;
+    ex:name "Zydus Cadila" .
+
+<http://example.org/pharma-supply-chain#Supplier/S038> a ex:Supplier ;
+    ex:address "Bandra Kurla Complex, Mumbai, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-22-2653-4444, info@wockhardt.com" ;
+    ex:name "Wockhardt" .
+
+<http://example.org/pharma-supply-chain#Supplier/S039> a ex:Supplier ;
+    ex:address "S. P. Biotech Park, Hyderabad, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-40-2302-1100, info@aurobindo.com" ;
+    ex:name "Aurobindo Pharma" .
+
+<http://example.org/pharma-supply-chain#Supplier/S040> a ex:Supplier ;
+    ex:address "Ahmedabad-Mehsana Highway, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-79-2396-2323, info@torrentpharma.com" ;
+    ex:name "Torrent Pharmaceuticals" .
+
+<http://example.org/pharma-supply-chain#Supplier/S041> a ex:Supplier ;
+    ex:address "Sarkhej-Bavla N.H. No. 8A, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-2717-250-226, info@cadilapharma.com" ;
+    ex:name "Cadila Pharmaceuticals" .
+
+<http://example.org/pharma-supply-chain#Supplier/S042> a ex:Supplier ;
+    ex:address "Electronic City, Bangalore, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-80-2808-2808, info@biocon.com" ;
+    ex:name "Biocon" .
+
+<http://example.org/pharma-supply-chain#Supplier/S043> a ex:Supplier ;
+    ex:address "Banjara Hills, Hyderabad, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-40-2354-7532, info@natcopharma.co" ;
+    ex:name "Natco Pharma" .
+
+<http://example.org/pharma-supply-chain#Supplier/S044> a ex:Supplier ;
+    ex:address "Kandivli Industrial Estate, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-22-6210-6050, info@ipca.com" ;
+    ex:name "Ipca Laboratories" .
+
+<http://example.org/pharma-supply-chain#Supplier/S045> a ex:Supplier ;
+    ex:address "Alembic Road, Vadodara, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-265-2280550, info@alembic.com" ;
+    ex:name "Alembic Pharmaceuticals" .
+
+<http://example.org/pharma-supply-chain#Supplier/S046> a ex:Supplier ;
+    ex:address "Paramus, NJ, USA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-201-794-3600, info@glenmarkgenerics.com" ;
+    ex:name "Glenmark Generics" .
+
+<http://example.org/pharma-supply-chain#Supplier/S047> a ex:Supplier ;
+    ex:address "Sector 16-A, Noida, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-120-436-1000, info@jubl.com" ;
+    ex:name "Jubilant Life Sciences" .
+
+<http://example.org/pharma-supply-chain#Supplier/S048> a ex:Supplier ;
+    ex:address "Signet Drive, Toronto, CA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-416-749-9300, info@apotex.com" ;
+    ex:name "Apotex" .
+
+<http://example.org/pharma-supply-chain#Supplier/S049> a ex:Supplier ;
+    ex:address "1400 Atwater Drive, PA" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+1-484-216-0000, info@endo.com" ;
+    ex:name "Endo International" .
+
+<http://example.org/pharma-supply-chain#Supplier/S050> a ex:Supplier ;
+    ex:address "Okhla Industrial Estate, New Delhi, IN" ;
+    ex:certificationStatus "Certified" ;
+    ex:contactInformation "+91-11-4654-0000, info@mankindpharma.com" ;
+    ex:name "Mankind Pharma" .
+
+onto:Material a owl:Class ;
+    rdfs:label "Material" ;
+    rdfs:comment "Represents raw materials used in manufacturing" .
+
+onto:Product a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "Represents final products being manufactured" .
+
+<http://example.org/pharma-supply-chain#Product/P001> a ex:Product ;
+    ex:batchNumber "B12345" ;
+    ex:description "Pain reliever and fever reducer" ;
+    ex:expiryDate "2025-12-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Tylenol" .
+
+<http://example.org/pharma-supply-chain#Product/P002> a ex:Product ;
+    ex:batchNumber "B67890" ;
+    ex:description "Antibiotic" ;
+    ex:expiryDate "2024-06-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Amoxil" .
+
+<http://example.org/pharma-supply-chain#Product/P003> a ex:Product ;
+    ex:batchNumber "B23456" ;
+    ex:description "Pain reliever" ;
+    ex:expiryDate "2025-11-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Advil" .
+
+<http://example.org/pharma-supply-chain#Product/P004> a ex:Product ;
+    ex:batchNumber "B34567" ;
+    ex:description "Allergy relief" ;
+    ex:expiryDate "2024-10-31T00:00:00"^^xsd:dateTime ;
+    ex:name "Zyrtec" .
+
+<http://example.org/pharma-supply-chain#Product/P005> a ex:Product ;
+    ex:batchNumber "B45678" ;
+    ex:description "Blood pressure medication" ;
+    ex:expiryDate "2025-09-30T00:00:00"^^xsd:dateTime ;
+    ex:name "Norvasc" .
+
+<http://example.org/pharma-supply-chain#Material/M005> a ex:Material ;
+    ex:description "Calcium channel blocker" ;
+    ex:name "Amlodipine" ;
+    ex:specifications "Purity: 96%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M002> a ex:Material ;
+    ex:description "Broad-spectrum antibiotic" ;
+    ex:name "Amoxicillin" ;
+    ex:specifications "Purity: 95%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M003> a ex:Material ;
+    ex:description "Nonsteroidal anti-inflammatory drug" ;
+    ex:name "Ibuprofen" ;
+    ex:specifications "Purity: 98%, Grade: Pharmaceutical" .
+
+<http://example.org/pharma-supply-chain#Material/M004> a ex:Material ;
+    ex:description "Antihistamine" ;
+    ex:name "Cetirizine" ;
+    ex:specifications "Purity: 97%, Grade: Pharmaceutical" .
+
+onto:Facility a owl:Class ;
+    rdfs:label "Facility" ;
+    rdfs:comment "Represents locations where products are manufactured or stored" .
+
+<http://example.org/pharma-supply-chain#Material/M001> a ex:Material ;
+    ex:description "Common analgesic and antipyretic" ;
+    ex:name "Paracetamol" ;
+    ex:specifications "Purity: 99%, Grade: Pharmaceutical" .
+
+onto:Supplier a owl:Class ;
+    rdfs:label "Supplier" ;
+    rdfs:comment "Represents suppliers providing materials" .
+
